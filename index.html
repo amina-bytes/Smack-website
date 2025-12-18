@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smack Shack | Pure Veg Café Davanagere</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Color Palette - Inspired by the Cafe Interior */
+        :root {
+            --sage-green: #7d8e6d;      /* Matches the cafe chairs/branding */
+            --soft-cream: #f9f7f2;      /* Warm wall color */
+            --warm-sand: #e8e2d6;       /* Table/Wood tones */
+            --deep-forest: #2f362a;     /* Dark accents from the window frames */
+            --white: #ffffff;
+            --accent-lime: #c5d86d;     /* Logo lime green */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--soft-cream);
+            color: var(--deep-forest);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background: rgba(255, 255, 255, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid var(--warm-sand);
+        }
+
+        .logo-text { font-weight: 700; font-size: 1.4rem; color: var(--sage-green); letter-spacing: 1px; }
+
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li { margin-left: 25px; }
+        .nav-links a { text-decoration: none; color: var(--deep-forest); font-weight: 500; transition: 0.3s; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--sage-green); }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(47, 54, 42, 0.4), rgba(47, 54, 42, 0.4)), url('images/cover.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 15px; }
+        .hero-content p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px; }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.9rem;
+        }
+        .btn-primary { background: var(--sage-green); color: white; }
+        .btn-secondary { background: white; color: var(--deep-forest); }
+        .btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        /* Common Section Styling */
+        .section { padding: 70px 8%; }
+        .section-title { text-align: center; margin-bottom: 40px; font-family: 'Playfair Display', serif; font-size: 2.2rem; }
+
+        /* Ambience Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .gallery-grid img { 
+            width: 100%; height: 300px; object-fit: cover; border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Menu Section */
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .menu-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid var(--sage-green);
+        }
+        .menu-card h3 { margin-bottom: 15px; color: var(--sage-green); }
+        .menu-item { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px dashed #ddd; padding-bottom: 5px; }
+
+        /* Loyalty Section */
+        .loyalty-box {
+            background: var(--sage-green);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            background: var(--warm-sand);
+            padding: 40px;
+            border-radius: 20px;
+        }
+        .testimonial-card { font-style: italic; background: white; padding: 20px; border-radius: 10px; }
+
+        /* FAQ */
+        .faq-grid { max-width: 800px; margin: 0 auto; }
+        .faq-item { margin-bottom: 15px; background: white; padding: 15px; border-radius: 8px; }
+        .faq-item h4 { color: var(--sage-green); margin-bottom: 5px; }
+
+        footer { background: var(--deep-forest); color: var(--warm-sand); padding: 50px 8% 20px; text-align: center; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: left; margin-bottom: 30px; }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed; bottom: 20px; right: 20px;
+            background: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; font-size: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-text">SMACK SHACK</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#ambience">Ambience</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" style="padding: 8px 15px;">Find Us</a>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Cozy Vibes, Better Bites.</h1>
+            <p>Your favorite pure vegetarian hangout in Davanagere. Perfect for study sessions, dates, and quick snack breaks.</p>
+            <a href="#menu" class="btn btn-primary">View Full Menu</a>
+            <a href="https://maps.google.com" class="btn btn-secondary">Get Directions</a>
+        </div>
+    </section>
+
+    <section class="section" id="ambience">
+        <h2 class="section-title">The Ambience</h2>
+        <div class="gallery-grid">
+            <img src="images/Seating Area.jpg" alt="Seating Area">
+            <img src="images/Minimalist Wall Art.jpg" alt="Minimalist Wall Art">
+            <img src="images/Service Counter.jpg" alt="Service Counter">
+            <img src="images/Logo Signage.jpg" alt="Logo Signage">
+        </div>
+    </section>
+
+    <section class="section" id="menu" style="background: var(--warm-sand);">
+        <h2 class="section-title">Popular on the Menu</h2>
+        <div class="menu-container">
+            <div class="menu-card">
+                <h3>☕ Beverages</h3>
+                <div class="menu-item"><span>Cold Coffee</span> <span>₹90</span></div>
+                <div class="menu-item"><span>Fresh Lime Soda</span> <span>₹60</span></div>
+                <div class="menu-item"><span>Signature Cooler</span> <span>₹110</span></div>
+            </div>
+            <div class="menu-item"></div> <div class="menu-card">
+                <h3>🧇 Waffles & Snacks</h3>
+                <div class="menu-item"><span>Belgian Waffle</span> <span>₹140</span></div>
+                <div class="menu-item"><span>Cheese Burger</span> <span>₹120</span></div>
+                <div class="menu-item"><span>Peri Peri Fries</span> <span>₹90</span></div>
+            </div>
+        </div>
+
+        <div class="loyalty-box">
+            <h2>🎓 Student Perks</h2>
+            <p>Show your Student ID to get 10% off on bills above ₹300! <br> High-speed Wi-Fi & Charging points available.</p>
+        </div>
+    </section>
+
+    <section class="section" id="reviews">
+        <h2 class="section-title">What Our Guests Say</h2>
+        <div class="testimonials">
+            <div class="testimonial-card">
+                "The most aesthetic cafe in Davanagere. Love the calm vibe for finishing my assignments."
+                <br><strong>- Rahul M.</strong>
+            </div>
+            <div class="testimonial-card">
+                "Pure veg and Jain options are great. The hygiene standards are impressive."
+                <br><strong>- Sneha R.</strong>
+            </div>
+            <div class="testimonial-card">
+                "Affordable and tasty. Their waffles are a must-try!"
+                <br><strong>- Arjun K.</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">FAQs</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h4>Is parking available?</h4>
+                <p>Yes, we have dedicated two-wheeler parking in front of the café.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Do you take party orders?</h4>
+                <p>Absolutely! We host birthdays and small gatherings. Contact us for details.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Are you open on Sundays?</h4>
+                <p>Yes, we are open daily from 10:00 AM to 10:00 PM.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div>
+                <h3>Smack Shack</h3>
+                <p>Creating happy moments with great food and warm vibes.</p>
+            </div>
+            <div>
+                <h3>Locate Us</h3>
+                <p>Davanagere, Karnataka</p>
+                <p>Near Vidyanagara 1st Cross</p>
+            </div>
+            <div>
+                <h3>Contact</h3>
+                <p>Phone: +91 98XXX XXXXX</p>
+                <p>Email: hello@smackshack.com</p>
+            </div>
+        </div>
+        <p>&copy; 2025 Smack Shack Cafe. Designed for Comfort.</p>
+    </footer>
+
+    <a href="https://wa.me/yournumber" class="fab">
+        <i>💬</i>
+    </a>
+
+</body>
+</html>
